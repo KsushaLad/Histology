@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:openDrawer="start"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/s1">
+        <menu>
+    <item
+        android:id="@+id/id_favourite"
+        android:icon="@drawable/heart"
+        android:title="@string/favorite" />
+        </menu>
+    </item>
+    <item android:title="@string/s2">
+        <menu>
+    <item
+        android:id="@+id/id_skorocheno"
+        android:icon="@drawable/heart"
+        android:title="@string/predislovie" />
+        </menu>
+    </item>
+    <item android:title="@string/theme01">
+        <menu>
+            <item
+                android:id="@+id/theme_1"
+                android:icon="@drawable/heart"
+                android:title="@string/theme1" />
+        </menu>
+    </item>
+
+    <item android:title="@string/theme02">
+        <menu>
+            <item
+                android:id="@+id/theme_2"
+                android:icon="@drawable/heart"
+                android:title="@string/theme2" />
+        </menu>
+    </item>
+
+    <item android:title="@string/theme03">
+        <menu>
+            <item
+                android:id="@+id/theme_3"
+                android:icon="@drawable/heart"
+                android:title="@string/theme3" />
+        </menu>
+    </item>
+    <item android:title="@string/theme04">
+        <menu>
+            <item
+                android:id="@+id/theme_4"
+                android:icon="@drawable/heart"
+                android:title="@string/theme4" />
+        </menu>
+    </item>
+    <item android:title="@string/theme05">
+        <menu>
+            <item
+                android:id="@+id/theme_5"
+                android:icon="@drawable/heart"
+                android:title="@string/theme5" />
+        </menu>
+    </item>
+    <item android:title="@string/theme06">
+        <menu>
+            <item
+                android:id="@+id/theme_6"
+                android:icon="@drawable/heart"
+                android:title="@string/theme6" />
+        </menu>
+    </item>
+    <item android:title="@string/theme07">
+        <menu>
+            <item
+                android:id="@+id/theme_7"
+                android:icon="@drawable/heart"
+                android:title="@string/theme7" />
+        </menu>
+    </item>
+    <item android:title="@string/theme08">
+        <menu>
+            <item
+                android:id="@+id/theme_8"
+                android:icon="@drawable/heart"
+                android:title="@string/theme8" />
+        </menu>
+    </item>
+    <item android:title="@string/theme09">
+        <menu>
+            <item
+                android:id="@+id/theme_9"
+                android:icon="@drawable/heart"
+                android:title="@string/theme9" />
+        </menu>
+    </item>
+    <item android:title="@string/theme010">
+        <menu>
+            <item
+                android:id="@+id/theme_10"
+                android:icon="@drawable/heart"
+                android:title="@string/theme10" />
+        </menu>
+    </item>
+    <item android:title="@string/theme011">
+        <menu>
+            <item
+                android:id="@+id/theme_11"
+                android:icon="@drawable/heart"
+                android:title="@string/theme11" />
+        </menu>
+    </item>
+    <item android:title="@string/theme012">
+        <menu>
+            <item
+                android:id="@+id/theme_12"
+                android:icon="@drawable/heart"
+                android:title="@string/theme12" />
+        </menu>
+    </item>
+</menu>

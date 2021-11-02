@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Histology - Гистология.</string>
+    <string name="app_name_toolbar">&#9825;Histology&#9825;</string>
+    <string name="favorite">Избранное</string>
+    <string name="theme1">Введение в гистологию. Гистологическая и микроскопическая техника. Тканевые элементы.</string>
+    <string name="theme01">Тема №1.</string>
+    <string name="theme2">Цитология. Общий план строения клетки.</string>
+    <string name="theme02">Тема №2.</string>
+    <string name="theme3">Цитология. Ядро клетки. Деление клетки. Жизненный цикл клеток. Реакция клеток на внешние воздействия. Старение и смерть клеток.</string>
+    <string name="theme03">Тема №3.</string>
+    <string name="theme4">Эмбриональное развитие человека. Ранние стадии эмбриогенеза.</string>
+    <string name="theme04">Тема №4.</string>
+    <string name="theme5">Эмбриогенез человека. Поздние стадии эмбрионального развития. Гистогенезы и органогенезы. Плацента. Компоненты и регуляторные механизмы эмбриогенеза.</string>
+    <string name="theme05">Тема №5.</string>
+    <string name="theme6">Введение в общую гистологию. Эпителиальные ткани. Железы.</string>
+    <string name="theme06">Тема №6.</string>
+    <string name="theme7">Мезенхима. Кровь. Лимфа.</string>
+    <string name="theme07">Тема №7.</string>
+    <string name="theme8">Собственно соединительные ткани.</string>
+    <string name="theme08">Тема №8.</string>
+    <string name="theme9">Костные и хрящевые ткани.</string>
+    <string name="theme09">Тема №9.</string>
+    <string name="theme10">Мышечные ткани.</string>
+    <string name="theme010">Тема №10.</string>
+    <string name="theme11">Нервная ткань. Нейроциты. Нервные волокна.</string>
+    <string name="theme011">Тема №11.</string>
+    <string name="theme12">Нервная ткань. Нервные окончания. Нерв.</string>
+    <string name="theme012">Тема № 12.</string>
+    <string name="predislovie">Список использованных сокращений.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="histology">Histology</string>
+    <string name="s1">Избранные термины.</string>
+    <string name="s2">Список сокращений.</string>
+</resources>

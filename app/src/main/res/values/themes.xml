@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Anatomy" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#1A6200EE</item>
+        <item name="colorPrimaryVariant">#80A7B8FB</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+<style name="Base.Widget.AppCompat.Toolbar." parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <item name="android:gravity">center</item>
+    <item name="android:layout_margin">20dp</item>
+    <item name="android:color">#1AFFFFFF</item>
+    <item name="android:statusBarColor">@drawable/menu_item</item>
+</style>
+
+
+
+
+</resources>
