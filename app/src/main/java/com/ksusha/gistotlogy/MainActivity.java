@@ -1,9 +1,6 @@
 package com.ksusha.gistotlogy;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +11,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
 import com.ksusha.gistotlogy.adapter.DataAdapter;
 import com.ksusha.gistotlogy.adapter.ListItem;
 import com.ksusha.gistotlogy.adapter.RecViewOnClickListener;
@@ -39,21 +35,21 @@ public class MainActivity extends AppCompatActivity implements NavItemSelectedLi
         setContentView(R.layout.activity_main);
         setupMenu();
         setRecOnClickListener();
-        init();
+        initialization();
     }
 
 
-    private void setupMenu() {
-        FragmentManager fm = getSupportFragmentManager();
-        MenuFragmentList mMenuFragment = (MenuFragmentList) fm.findFragmentById(R.id.id_container_menu);
-        if (mMenuFragment == null) {
-            mMenuFragment = new MenuFragmentList();
-            mMenuFragment.setNavItemSelectedListener(this);
-            fm.beginTransaction().add(R.id.id_container_menu, mMenuFragment).commit();
+    private void setupMenu() { //загрузка меню
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        MenuFragmentList menuFragmentList = (MenuFragmentList) fragmentManager.findFragmentById(R.id.id_container_menu); //FragmentManager запускает Fragment
+        if (menuFragmentList == null) {
+            menuFragmentList = new MenuFragmentList();
+            menuFragmentList.setNavItemSelectedListener(this);
+            fragmentManager.beginTransaction().add(R.id.id_container_menu, menuFragmentList).commit();
         }
     }
 
-    private void upDateFavourite() {
+    private void upDateFavourite() { //обновление Избранного
         List<ListItem> listFavourites = new ArrayList<>();
         List<String[]> listDataArray = new ArrayList<>();
         listDataArray.add(getResources().getStringArray(R.array.skorocheno));
@@ -76,39 +72,33 @@ public class MainActivity extends AppCompatActivity implements NavItemSelectedLi
                 if (contains != null) {
                     if (contains.charAt(j) == '1') {
                         ListItem item = new ListItem();
-                        item.setText(listDataArray.get(i)[j]);
+                        item.setText(listDataArray.get(i)[j]); //взятие избранных
                         item.setPosition(j);
                         item.setCategory(nameOfCategoryArray[i]);
-                        listFavourites.add(item);
+                        listFavourites.add(item); //помещение в список избранных
                     }
                 }
             }
         }
-        dataAdapter.updateArray(listFavourites, true);
+        dataAdapter.updateArray(listFavourites, true); //обновление списка, true - избранное
     }
 
-    private void init() {
-        preferences = getSharedPreferences("CATEGORY", MODE_PRIVATE);
+    private void initialization() {
+        preferences = getSharedPreferences("CATEGORY", MODE_PRIVATE); //таблица, куда будут сохраняться избранные без доступа с других приложений
         rcView = findViewById(R.id.rcView);
-        rcView.setLayoutManager(new LinearLayoutManager(this));
+        rcView.setLayoutManager(new LinearLayoutManager(this)); //расположение элементов
         listData = new ArrayList<>();
         String[] skorocheno = getResources().getStringArray(R.array.skorocheno);
-        /*for (String s : skorocheno) {
-            ListItem listItem = new ListItem();
-            listItem.setText(s);
-            listItem.setFavourite(false);
-            listData.add(listItem);
-        }*/
         dataAdapter = new DataAdapter(this, recViewOnClickListener, listData);
         upDateMainList(skorocheno, "skrocheno");
-        rcView.setAdapter(dataAdapter);
+        rcView.setAdapter(dataAdapter); //подключение адаптера к списку
     }
 
     @SuppressLint("NonConstantResourceId")
     @Override
-    public void onNavItemSelectedListener(MenuItem item) {
+    public void onNavItemSelectedListener(MenuItem item) { //прослушивание нажатий внутри MainActivity
         Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
-        switch (item.getItemId()) {
+        switch (item.getItemId()) { //в зависимости от позиции меняем массив с данными
             case R.id.id_favourite:
                 upDateFavourite();
                 break;
@@ -154,17 +144,17 @@ public class MainActivity extends AppCompatActivity implements NavItemSelectedLi
         }
     }
 
-    private void upDateMainList(String[] array, String category) {
+    private void upDateMainList(String[] array, String category) { //обновление списка
         this.category = category;
         StringBuilder favourite_category = new StringBuilder("");
         String tempCategory = preferences.getString(category, "none");
-        if (tempCategory != null) {
+        if (tempCategory != null) { //если уже существует такой String в категории, тогда не перезаписываем
             if (tempCategory.equals("none")) {
                 for (int i = 0; i < array.length; i++) {
-                    favourite_category.append("0").toString();
+                    favourite_category.append("0").toString(); //по количеству элементов в каждом массиве
                 }
                 Log.d("MY", category + ": " + favourite_category);
-                saveString(favourite_category.toString());
+                saveString(favourite_category.toString()); //сохранение строки в память
             } else {
 
             }
@@ -173,24 +163,21 @@ public class MainActivity extends AppCompatActivity implements NavItemSelectedLi
         for (int i = 0; i < array.length; i++) {
             ListItem listItem = new ListItem();
             listItem.setText(array[i]);
-            listItem.setCategory(category);
+            listItem.setCategory(category); //с какой категории Item
             listItem.setPosition(i);
             list.add(listItem);
         }
-        dataAdapter.updateArray(list, false);
+        dataAdapter.updateArray(list, false); //обновление списка, false - категория
     }
 
     private void setRecOnClickListener() {
-        recViewOnClickListener = new RecViewOnClickListener() {
-            @Override
-            public void onItemClicked(int position) {
-                String tempCategory = preferences.getString(category, "none");
-                if (tempCategory != null) {
-                    if (tempCategory.charAt(position) == '0') {
-                        saveString(replaceCharAtPosition(position, '1', tempCategory));
-                    } else {
-                        saveString(replaceCharAtPosition(position, '0', tempCategory));
-                    }
+        recViewOnClickListener = position -> { //позиция на которую нажали
+            String tempCategory = preferences.getString(category, "none"); //количество 0 и 1
+            if (tempCategory != null) {
+                if (tempCategory.charAt(position) == '0') {
+                    saveString(replaceCharAtPosition(position, '1', tempCategory));
+                } else {
+                    saveString(replaceCharAtPosition(position, '0', tempCategory));
                 }
             }
         };
@@ -203,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements NavItemSelectedLi
     }
 
     private void saveString(String stringToSave) {
-        SharedPreferences.Editor editorSave = preferences.edit();
+        SharedPreferences.Editor editorSave = preferences.edit(); //запись в память
         editorSave.putString(category, stringToSave);
         editorSave.apply();
         Log.d("MY", "My: " + preferences.getString(category, "none"));

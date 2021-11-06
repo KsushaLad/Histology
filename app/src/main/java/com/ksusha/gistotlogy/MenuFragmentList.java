@@ -27,22 +27,16 @@ public class MenuFragmentList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
-
-        NavigationView vNavigation = view.findViewById(R.id.vNavigation);
-        vNavigation.setItemIconTintList(null);
-        vNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                navItemSelectedListener.onNavItemSelectedListener(menuItem);
-                return false;
-            }
+        NavigationView navigationView = view.findViewById(R.id.vNavigation);
+        navigationView.setItemIconTintList(null);
+        navigationView.setNavigationItemSelectedListener(menuItem -> {
+            navItemSelectedListener.onNavItemSelectedListener(menuItem); //передача нажатия через интерфейс в MainActivity
+            return false;
         });
-
         return view;
     }
 
-    public void setNavItemSelectedListener(NavItemSelectedListener navItemSelectedListener) {
+    public void setNavItemSelectedListener(NavItemSelectedListener navItemSelectedListener) { //присваивание интерфейса
         this.navItemSelectedListener = navItemSelectedListener;
     }
 }
