@@ -1,6 +1,6 @@
 # Histology
 ## An application that helps students of medical universities structuring knowledge of histology.The directory contains all the necessary terms to study this item.It is possible to add to "Favorites" and also has a section with the necessary contractions of terms.
-![Screenshot](Підготуйся-до-зно-на-всі-200_.jpg)
+![Screenshot](гистология.jpg)
 ## This project uses:
 * Java; 
 * Collections; 
